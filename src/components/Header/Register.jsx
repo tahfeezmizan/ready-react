@@ -5,11 +5,12 @@ const Register = () => {
 
     const handleUserRegister = e => {
         e.preventDefault();
-
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password)
+
+        console.log(name, email, password);
+        
     }
 
     return (
@@ -20,7 +21,8 @@ const Register = () => {
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onClick={handleUserRegister} className="card-body">
+
+                    <form onSubmit={handleUserRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
