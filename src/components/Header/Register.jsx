@@ -3,9 +3,9 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { UserLogContext } from '../providers/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(UserLogContext);
+    const { createUser, singInWithGoogle } = useContext(UserLogContext);
     const navigate = useNavigate();
-    
+
     const handleUserRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -24,7 +24,21 @@ const Register = () => {
                 const errorMsg = error.message;
                 console.log(errorMsg)
             })
+
     }
+
+    const handleGoogleLogin = () => {
+        singInWithGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate('/')
+            })
+            .catch(error => {
+                const errorMsg = error.message;
+                console.log(errorMsg);
+            })
+    }
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -63,6 +77,10 @@ const Register = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                         <p>already have account <NavLink to="/login" className="underline text-green-400">login</NavLink></p>
+
+                        <div className="">
+                            <button onClick={handleGoogleLogin} className='btn btn-ghost'>Google</button>
+                        </div>
                     </form>
                 </div>
             </div>
