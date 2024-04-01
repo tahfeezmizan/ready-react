@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserLogContext } from '../providers/AuthProvider';
-import Login from './Login';
 
 const Navigation = () => {
     const { user, logOut } = useContext(UserLogContext);
@@ -14,9 +13,11 @@ const Navigation = () => {
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/order'>Orders</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
+        {user && <li><NavLink to='/order'>Orders</NavLink></li>}
+        {!user && <>
+            <li><NavLink to='/login'>Login</NavLink></li>
+            <li><NavLink to='/register'>Register</NavLink></li>
+        </>}
     </>
 
     return (

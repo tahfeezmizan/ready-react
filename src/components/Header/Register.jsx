@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { UserLogContext } from '../providers/AuthProvider';
 
 const Register = () => {
-
-    const { createUser } = useContext(UserLogContext)
+    const { createUser } = useContext(UserLogContext);
+    const navigate = useNavigate();
     
     const handleUserRegister = e => {
         e.preventDefault();
@@ -17,6 +17,8 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
+                e.target.reset();
+                navigate('/')
             })
             .then(error => {
                 const errorMsg = error.message;
