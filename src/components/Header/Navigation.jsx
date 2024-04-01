@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { UserLogContext } from '../providers/AuthProvider';
+import Login from './Login';
 
 const Navigation = () => {
+    const { user, logOut } = useContext(UserLogContext);
+
+    const hanldeLogOut = () => {
+        logOut()
+            .then(() => console.log('User LogOut Sucessfully'))
+            .catch(error => console.error(error))
+    }
+
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/order'>Orders</NavLink></li>
         <li><NavLink to='/login'>Login</NavLink></li>
         <li><NavLink to='/register'>Register</NavLink></li>
     </>
@@ -25,6 +36,12 @@ const Navigation = () => {
                 <ul className="menu menu-horizontal px-1 gap-5">
                     {links}
                 </ul>
+                {
+                    user ? <>
+                        <span>{user.email}</span>
+                        <button onClick={hanldeLogOut} className='btn mx-2'>Sing Out</button>
+                    </> : <NavLink to="/login"></NavLink>
+                }
             </div>
         </div>
     );

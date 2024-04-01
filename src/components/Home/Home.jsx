@@ -3,8 +3,7 @@ import { UserLogContext } from '../providers/AuthProvider';
 
 const Home = () => {
     const AuthInfo = useContext(UserLogContext)
-    console.log(AuthInfo)
-
+    
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content text-center">

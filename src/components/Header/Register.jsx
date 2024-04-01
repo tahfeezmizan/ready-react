@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { UserLogContext } from '../providers/AuthProvider';
 
 const Register = () => {
 
+    const { createUser } = useContext(UserLogContext)
+    
     const handleUserRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-
         console.log(name, email, password);
-        
+
+        // create user by using context 
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user)
+            })
+            .then(error => {
+                const errorMsg = error.message;
+                console.log(errorMsg)
+            })
     }
 
     return (
