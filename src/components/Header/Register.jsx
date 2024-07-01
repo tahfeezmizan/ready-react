@@ -6,6 +6,7 @@ const Register = () => {
     const { createUser, singInWithGoogle } = useContext(UserLogContext);
     const navigate = useNavigate();
 
+    // new user register function
     const handleUserRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
