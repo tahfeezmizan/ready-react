@@ -13,6 +13,7 @@ const Navigation = () => {
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/about'>About</NavLink></li>
         {user && <li><NavLink to='/order'>Orders</NavLink></li>}
         {!user && <>
             <li><NavLink to='/login'>Login</NavLink></li>
