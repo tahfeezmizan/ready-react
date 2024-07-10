@@ -4,7 +4,7 @@ import Navigation from './Header/Navigation';
 
 const Root = () => {
     return (
-        <div className='w-full md:w-8/12 mx-auto text-center'>
+        <div className=''>
             <Navigation></Navigation>
             <Outlet></Outlet>
         </div>
